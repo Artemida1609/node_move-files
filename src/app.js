@@ -37,6 +37,16 @@ function moveFiles() {
     return;
   }
 
+  const isDirPath =
+    destinationLocation.endsWith('/') || destinationLocation.endsWith('\\');
+
+  if (!fs.existsSync(destinationLocation) && isDirPath) {
+    console.error(`Destination path is a directory,
+      please provide a file path.`);
+
+    return;
+  }
+
   try {
     if (
       fs.existsSync(destinationLocation) &&
