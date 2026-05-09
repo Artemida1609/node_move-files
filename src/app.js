@@ -37,10 +37,11 @@ function moveFiles() {
     return;
   }
 
+  const dirPath = destinationLocation.replace(/\/+$/, '');
   const isDirPath =
     destinationLocation.endsWith('/') || destinationLocation.endsWith('\\');
 
-  if (!fs.existsSync(destinationLocation) && isDirPath) {
+  if (!fs.existsSync(dirPath) && isDirPath) {
     console.error(`Destination path is a directory,
       please provide a file path.`);
 
